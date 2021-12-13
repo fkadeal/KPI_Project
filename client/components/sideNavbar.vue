@@ -6,8 +6,8 @@
 <li class="nav-item" > <router-link :to="{ name: 'KPI' }" class="nav-link" active-class="active"> {{ $t('KPIs') }} </router-link></li>
 <li class="nav-item" > <router-link :to="{ name: 'Entery' }" class="nav-link" active-class="active"> {{ $t('Add Data') }} </router-link></li>
 <li class="nav-item" > <router-link :to="{ name: 'home' }" class="nav-link" active-class="active"> {{ $t('Dashbord') }} </router-link></li>
-<!-- <li class="nav-item" ><router-link :to="{ name: 'report' }" class="nav-link" active-class="active"> {{ $t('Reports') }} </router-link></li>
-<li class="nav-item " ><router-link :to="{ name: 'analytics' }" class="nav-link" active-class="active el-icon-odometer"> {{ $t('Analytics') }} </router-link></li> -->
+ <!-- <li class="nav-item" ><router-link :to="{ name: 'report' }" class="nav-link" active-class="active"> {{ $t('Reports') }} </router-link></li> -->
+<li class="nav-item " ><router-link :to="{ name: 'analytics' }" class="nav-link" active-class="active el-icon-odometer"> {{ $t('Analytics') }} </router-link></li>
  </ul>
 </div>
 </div>
