@@ -1,5 +1,118 @@
 <template>
-    <div>
-        <h1>Analytics.vue</h1>
+    <div> 
+     
+    <router-link :to="{ name: 'Entery' }" class="el-icon-circle-plus size1 nav-link " > {{ $t('Add-New') }} </router-link>
+   
+     <card >
+     
+        <line-chart :data="gdata[0]"></line-chart>
+{{ gdata  }}
+       
+  <el-table :data="kpisdata.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+    
+    <el-table-column label="by Date"  prop="created_at"> </el-table-column>
+    <el-table-column label="Targate"  prop="targete"> </el-table-column>
+    <el-table-column label="Achieved" prop="sells"> </el-table-column>
+
+    <el-table-column align="right"> 
+        <template slot="header" slot-scope="scope">
+          <el-input  v-model="search"  size="mini" placeholder="Type to search"/>
+        </template>
+      <template slot-scope="scope">
+        
+        <el-button class="el-icon-edit size1"  @click="handleAdd(scope.$index, scope.row)" circle></el-button>
+        <el-button class="el-icon-delete-solid size1" type="danger" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+</card>
+  <card>
+      pagination
+  </card>
     </div>
 </template>
+
+        
+<script>
+import axios from 'axios';
+import Card from '../components/global/Card.vue';
+    export default {
+  components: { Card },
+        data() {
+            return {
+                gdata:{},
+                Kpi: {},
+                 kpisdata: {},
+                 kpisdata: [{
+          error: 'check YOUR Connection ',
+        }],
+        search: '',
+            }
+        },
+        created() {
+            axios.get(`http://localhost:8000/api/addkpi/${this.$route.params.id}`)
+                .then((res) => {
+                    this.kpis = res.data;
+                });
+             axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
+                .then((res) => {
+                    this.kpisdata = res.data;
+                });
+
+                        
+                    // let datasell = {};
+                    // let datasellall = {};
+                    var newdata = [];
+                    let my_object = {};  
+                axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
+                        .then((res) => {
+                    for (var i = 0; i < res.data.length; i++){
+                            console.log('i '+i);
+                            my_object[res.data[i].created_at.toString()] = res.data[i].sells; 
+                        }
+                        newdata.push(my_object);
+                        console.log(newdata);
+                        this.gdata=newdata;
+                });       
+             },
+        methods: {
+        handleAdd(index, row) {
+        console.log(index, row);
+         this.$router.push({name: 'Enterdata', params: { id: row.id }})
+      },
+      handleDelete(index, row) {
+            this.$confirm('This will permanently delete this Data. Continue?', 'Warning', {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type: 'warning',
+            center: true
+            }).then(() => {
+                    axios
+                    .delete(`http://localhost:8000/api/deletekpi/${row.id}`)
+                    .then(response => ( 
+                      this.$router.push({ name: 'home' })
+                    ))
+                    .catch(err => console.log(err))
+                    .finally(() => this.loading = false)
+
+            this.$message({
+                type: 'success',
+                message: 'Delete completed'
+            });
+            }).catch(() => {
+            this.$message({
+                type: 'info',
+                message: 'Delete canceled'
+            });
+            });
+            console.log(row.id)
+        }
+        }
+            
+    }
+</script>
+<style scoped>
+.size1 {
+   font-size: 1rem;
+}
+</style>
