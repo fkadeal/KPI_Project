@@ -19,10 +19,8 @@
           <el-input  v-model="search"  size="mini" placeholder="Type to search"/>
         </template>
       <template slot-scope="scope">
-        <el-button class="el-icon-circle-plus size1"  circle>
-          <router-link :to="{name: 'Enterdata', params: { id: scope.row.id }}" > </router-link></el-button>
-        <el-button size="mini" type="danger"
-          @click="handleDelete(scope.$index, scope.row)" class="el-icon-delete-solid size1" circle></el-button>
+        <el-button class="el-icon-circle-plus size1"  @click="handleAdd(scope.$index, scope.row)" circle></el-button>
+        <el-button class="el-icon-delete-solid size1" type="danger" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -59,13 +57,12 @@ import Card from '../components/global/Card.vue';
         },
         methods: {
             
-      handleEdit(index, row) {
+      handleAdd(index, row) {
         console.log(index, row);
-         
-                       
+         this.$router.push({name: 'Enterdata', params: { id: row.id }})
       },
       handleDelete(index, row) {
-            this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+            this.$confirm('This will permanently delete this KPI. Continue?', 'Warning', {
             confirmButtonText: 'OK',
             cancelButtonText: 'Cancel',
             type: 'warning',
