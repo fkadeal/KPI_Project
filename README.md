@@ -9,10 +9,9 @@ Track your Key Performance Indicators, Metrics and Business Data with insightful
 <div class="generic-holder tools-holder">
             <h2>All these tools in one place</h2>
             <p>
-                <amp-img alt="A dashboard icon showing a dark theme and 4 graphs" width="180px" height="130px" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Dashboard-Tool.svg" class="i-amphtml-element i-amphtml-layout-fixed i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" i-amphtml-layout="fixed" style="width: 180px; height: 130px;">
-                <img decoding="async" alt="A dashboard icon showing a dark theme and 4 graphs" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Dashboard-Tool.svg" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
+     <img decoding="async" alt="A dashboard icon showing a dark theme and 4 graphs" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Dashboard-Tool.svg" class="i-amphtmfill-content i-amphtml-replaced-content"></amp-img>
                 <span><strong>Dashboards</strong><br>Quickly bring your data to life with interactive charts and graphs</span>
-            </p>
+           
 
             <p>
                 <amp-img alt="A report icon displaying a blue line graph" width="180px" height="130px" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Reports-Tool.svg" class="i-amphtml-element i-amphtml-layout-fixed i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" i-amphtml-layout="fixed" style="width: 180px; height: 130px;">
