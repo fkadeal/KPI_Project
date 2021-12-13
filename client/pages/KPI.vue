@@ -19,6 +19,7 @@
           <el-input  v-model="search"  size="mini" placeholder="Type to search"/>
         </template>
       <template slot-scope="scope">
+        <el-button class="el-icon-s-data size1"  @click="handleData(scope.$index, scope.row)" circle></el-button>
         <el-button class="el-icon-circle-plus size1"  @click="handleAdd(scope.$index, scope.row)" circle></el-button>
         <el-button class="el-icon-delete-solid size1" type="danger" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
       </template>
@@ -43,10 +44,8 @@ import Card from '../components/global/Card.vue';
                  products: {},
                  products: [{
           error: 'check YOUR Connection ',
-        } 
-        ],
+        }],
         search: '',
-                
             }
         },
         created() {
@@ -56,8 +55,10 @@ import Card from '../components/global/Card.vue';
                 });
         },
         methods: {
-            
-      handleAdd(index, row) {
+          handleData(index, row){
+              this.$router.push({name: 'analytic', params: { id: row.id }})
+          },
+        handleAdd(index, row) {
         console.log(index, row);
          this.$router.push({name: 'Enterdata', params: { id: row.id }})
       },
@@ -70,8 +71,8 @@ import Card from '../components/global/Card.vue';
             }).then(() => {
                     axios
                     .delete(`http://localhost:8000/api/addkpi/${row.id}`)
-                    .then(response => (
-                        this.$router.push({ name: 'home' })
+                    .then(response => ( 
+                      this.$router.push({ name: 'home' })
                     ))
                     .catch(err => console.log(err))
                     .finally(() => this.loading = false)
