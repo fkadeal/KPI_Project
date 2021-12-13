@@ -13,6 +13,7 @@ const routes = [
   { path: '/report', name: 'report', component: page('Report.vue') },
   { path: '/Entery/add/:id', name: 'Enterdata', component: page('addEntery.vue') },
   { path: '/analytics', name: 'analytics', component: page('Analytics.vue') },
+  { path: '/analytics/:id', name: 'analytic', component: page('Analytics.vue') },
 
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },

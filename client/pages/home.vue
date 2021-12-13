@@ -1,7 +1,4 @@
-
 <template>
-
-
   <card title="Dashbord"> 
    {{ $t('you_are_logged_in') }}
   
@@ -15,7 +12,9 @@ import axios from 'axios' ;
 export default {
   middleware: 'auth',
 head () {
-    return { title: this.$t('home') }
+    return {
+       title: this.$t('home') 
+       }
   },
      
   data(){ 
@@ -30,36 +29,16 @@ head () {
     let my_object = {};  
  
          axios.get('http://localhost:8000/api/kpi')
-                .then((res) => { 
-                // this.gdata=res.data;
+                .then((res) => {
                 
                   for (var i = 0; i < res.data.length; i++){
                     console.log('i '+i);
                     my_object[res.data[i].created_at.toString()] = res.data[i].sells; 
                   }
-                  newdata.push(my_object);
+                newdata.push(my_object);
                 console.log(newdata);
                 this.gdata=newdata;
-                  });
-                
-                // const ul ='newdata';
-                // this.thisdata=newdata.toString();
-                //  my_object=Object.assign({},my_object);
-                //  console.log(datasellall);
-                //  console.log(my_object);
-                //  console.log('newdata');  
-  
-  
+        });
   },
-
-// created() {
-//             axios
-//                 .get(`http://localhost:8000/api/kpi`)
-//                 .then((res) => {
-//                     this.gdata = res.data;
-//                 });
-//         },
-
-
 }
 </script>
