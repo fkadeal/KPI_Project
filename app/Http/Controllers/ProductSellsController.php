@@ -27,5 +27,15 @@ public function store(Request $request){
              
     return response()->json('product created!');
 }
+public function show($id){
+    $specShow = ProductSells::where('Kpi_id', $id)->get();
+    return response()->json($specShow);
+}
+
+public function destroy($id){ 
+    $prod = ProductSells::find($id);
+    $prod->delete();
+    return response()->json('KPI Data delleted');
+}
 
 }
