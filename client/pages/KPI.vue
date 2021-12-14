@@ -37,6 +37,7 @@
 import axios from 'axios';
 import Card from '../components/global/Card.vue';
     export default {
+      middleware: 'auth',
   components: { Card },
         data() {
             return {

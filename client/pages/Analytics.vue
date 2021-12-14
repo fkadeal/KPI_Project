@@ -1,14 +1,11 @@
 <template>
     <div> 
-     
-    <router-link :to="{ name: 'Entery' }" class="el-icon-circle-plus size1 nav-link " > {{ $t('Add-New') }} </router-link>
-   
      <card >
      
         <line-chart :data="gdata[0]"></line-chart>
 {{ gdata  }}
        
-  <el-table :data="kpisdata.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%">
+  <el-table :data="kpisdata.filter(data => !search )" style="width: 100%">
     
     <el-table-column label="by Date"  prop="created_at"> </el-table-column>
     <el-table-column label="Targate"  prop="targete"> </el-table-column>
@@ -24,6 +21,11 @@
         <el-button class="el-icon-delete-solid size1" type="danger" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
       </template>
     </el-table-column>
+    <el-pagination
+  background
+  layout="prev, pager, next"
+  :total="totaldata">
+</el-pagination>
   </el-table>
 </card>
   <card>
@@ -37,15 +39,14 @@
 import axios from 'axios';
 import Card from '../components/global/Card.vue';
     export default {
+      middleware: 'auth',
   components: { Card },
         data() {
             return {
                 gdata:{},
+                totaldata:{},
                 Kpi: {},
-                 kpisdata: {},
-                 kpisdata: [{
-          error: 'check YOUR Connection ',
-        }],
+                 kpisdata: [{error: 'check YOUR Connection ',}],
         search: '',
             }
         },
@@ -66,6 +67,7 @@ import Card from '../components/global/Card.vue';
                     let my_object = {};  
                 axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
                         .then((res) => {
+                            this.totaldata = res.data.length+1;
                     for (var i = 0; i < res.data.length; i++){
                             console.log('i '+i);
                             my_object[res.data[i].created_at.toString()] = res.data[i].sells; 
