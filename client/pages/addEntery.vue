@@ -21,10 +21,8 @@
                     
                     <td><div class="col-xs-4">
             <form @submit.prevent="create">
-                   
                         <input type="number" class="col-xs-2 form-control" v-model="product.todySell">
-                    
-                    <div v-if="show=false" class="form-group">
+                        <div v-if="show=false" class="form-group">
                         <label>Detail</label>
                         <input type="text" class="form-control" v-model="product.targate">
                         <input  type="number" v-model="product.id">
@@ -50,7 +48,7 @@ import axios from 'axios';
             }
         },
         created() {
-            axios.get(`http://localhost:8000/api/addkpi/${this.$route.params.id}`)
+            axios.get(`${process.env.APP_URL,'/addkpi/'+ this.$route.params.id}`)
                 .then((res) => {
                     this.product = res.data;
                 });
@@ -58,7 +56,7 @@ import axios from 'axios';
         methods: {
             create() {
                 axios
-                    .post(`http://localhost:8000/api/kpi/`, this.product)
+                    .post(`${process.env.APP_URL,'/kpi/'}`, this.product)
                     .then((res) => {
                         this.$router.push({ name: 'KPI' });
                     });

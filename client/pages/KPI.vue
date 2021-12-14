@@ -50,7 +50,7 @@ import Card from '../components/global/Card.vue';
             }
         },
         created() {
-            axios.get('http://localhost:8000/api/addkpi')
+            axios.get(`${process.env.APP_URL,'/addkpi'}`)
                 .then(response => {
                     this.products = response.data;
                 });
