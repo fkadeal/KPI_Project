@@ -106,9 +106,9 @@ import Card from '../components/global/Card.vue';
             center: true
             }).then(() => {
                     axios
-                    .delete(`http://localhost:8000/api/deletekpi/${row.id}`)
+                    .delete(`http://localhost:8000/api/kpi/${row.id}`)
                     .then(response => ( 
-                      this.$router.push({ name: 'home' })
+                      this.$router.push({ name: 'analytics' ,params: {id: row.id}})
                     ))
                     .catch(err => console.log(err))
                     .finally(() => this.loading = false)
