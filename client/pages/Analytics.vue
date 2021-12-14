@@ -1,8 +1,8 @@
 <template>
     <div> 
      <card >
-     
-        <line-chart :data="gdata[0]"></line-chart>
+  
+        <line-chart name='work' :data="gdata"></line-chart>
 {{ gdata  }}
        
   <el-table :data="kpisdata.filter(data => !search )" style="width: 100%">
@@ -16,16 +16,15 @@
           <el-input  v-model="search"  size="mini" placeholder="Type to search"/>
         </template>
       <template slot-scope="scope">
-        
         <el-button class="el-icon-edit size1"  @click="handleAdd(scope.$index, scope.row)" circle></el-button>
         <el-button class="el-icon-delete-solid size1" type="danger" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
       </template>
     </el-table-column>
-    <el-pagination
+    <!-- <el-pagination
   background
   layout="prev, pager, next"
   :total="totaldata">
-</el-pagination>
+</el-pagination> -->
   </el-table>
 </card>
   <card>
@@ -43,6 +42,7 @@ import Card from '../components/global/Card.vue';
   components: { Card },
         data() {
             return {
+              
                 gdata:{},
                 totaldata:{},
                 Kpi: {},
@@ -61,21 +61,38 @@ import Card from '../components/global/Card.vue';
                 });
 
                         
-                    // let datasell = {};
-                    // let datasellall = {};
-                    var newdata = [];
-                    let my_object = {};  
+                    var achieveddata = [];
+                    let achieved = {};
+                    var targetdata=[];
+                    let target = {};  
                 axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
                         .then((res) => {
                             this.totaldata = res.data.length+1;
                     for (var i = 0; i < res.data.length; i++){
                             console.log('i '+i);
-                            my_object[res.data[i].created_at.toString()] = res.data[i].sells; 
+                            achieved[res.data[i].created_at.toString()] = res.data[i].sells;
+                            target[res.data[i].created_at.toString()] = res.data[i].targete;
                         }
-                        newdata.push(my_object);
-                        console.log(newdata);
-                        this.gdata=newdata;
+                        achieveddata.push(achieved);
+                        targetdata.push(target);
+                        console.log(achieveddata);
+                        console.log(target);
+
+                        console.log("datasellalldatasellalldatasellalldatasellall");
+                        console.log(achieveddata[0]);
+                        console.log(targetdata[0]);
+                        console.log("datasellalldatasellalldatasellall"); 
+                        let data = [
+                {name: "Achieved", data: achieveddata[0]},
+                {name: "Target", data: targetdata[0]}
+              ];
+              this.gdata=data;
                 });       
+                //String strdata= achieveddata[0].toString()
+                
+
+               
+              
              },
         methods: {
         handleAdd(index, row) {
