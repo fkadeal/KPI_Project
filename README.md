@@ -1,17 +1,32 @@
-# Laravel-Nuxt
-
+# KPI_Project
+Track your Key Performance Indicators, Metrics and Business Data with insightful KPI Dashboards and Reports
 <a href="https://github.com/cretueusebiu/laravel-nuxt/actions"><img src="https://github.com/cretueusebiu/laravel-nuxt/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/cretueusebiu/laravel-nuxt"><img src="https://poser.pugx.org/cretueusebiu/laravel-nuxt/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/cretueusebiu/laravel-nuxt"><img src="https://poser.pugx.org/cretueusebiu/laravel-nuxt/v/stable.svg" alt="Latest Stable Version"></a>
 
 > A Laravel-Nuxt starter project template.
 
-<p align="center">
-<img src="https://i.imgur.com/NHFTsGt.png">
-</p>
+<div class="generic-holder tools-holder">
+            <h2>All these tools in one place</h2>
+            <p>
+     <img decoding="async" alt="A dashboard icon showing a dark theme and 4 graphs" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Dashboard-Tool.svg" class="i-amphtmfill-content i-amphtml-replaced-content"></amp-img>
+                <span><strong>Dashboards</strong><br>Quickly bring your data to life with interactive charts and graphs</span>
+           
+
+            <p>
+                <amp-img alt="A report icon displaying a blue line graph" width="180px" height="130px" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Reports-Tool.svg" class="i-amphtml-element i-amphtml-layout-fixed i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" i-amphtml-layout="fixed" style="width: 180px; height: 130px;">
+                <img decoding="async" alt="A report icon displaying a blue line graph" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Reports-Tool.svg" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
+                <span><strong>Reports</strong><br>Create and share meaningful insights with teams and colleagues</span>
+            </p>
+            <p>
+                <amp-img alt="An analytics icon of a monitor showing a magnifiying glass on top of a chart" width="180px" height="130px" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Analytics-Tool.svg" class="i-amphtml-element i-amphtml-layout-fixed i-amphtml-layout-size-defined i-amphtml-built i-amphtml-layout" i-amphtml-layout="fixed" style="width: 180px; height: 130px;">
+                <img decoding="async" alt="An analytics icon of a monitor showing a magnifiying glass on top of a chart" src="https://cdn.simplekpi.com/images/SVGs/Home-KPI-Analytics-Tool.svg" class="i-amphtml-fill-content i-amphtml-replaced-content"></amp-img>
+                <span><strong>Analytics</strong><br>Analyze the ups and downs to make sense of your data</span>
+            </p>
+        </div>
 
 ## Features
-
+rack your Key Performance Indicators, Metrics and Business Data with insightful KPI Dashboards and Reports
 - Nuxt 2
 - Laravel 8
 - SPA or SSR
