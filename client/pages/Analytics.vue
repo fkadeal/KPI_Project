@@ -45,26 +45,24 @@ import Card from '../components/global/Card.vue';
                 gdata:{},
                 totaldata:{},
                 Kpi: {},
-                 kpisdata: [{error: 'check YOUR Connection ',}],
-        search: '',
-            }
+                kpisdata: [{error: 'check YOUR Connection ',}],
+                search: '',
+                      }
         },
         created() {
-            axios.get(`http://localhost:8000/api/addkpi/${this.$route.params.id}`)
+            axios.get(`${process.env.APP_URL,'/addkpi/'+this.$route.params.id}`)
                 .then((res) => {
                     this.kpis = res.data;
                 });
-             axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
+             axios.get(`${process.env.APP_URL,'/kpi/'+this.$route.params.id}`)
                 .then((res) => {
                     this.kpisdata = res.data;
                 });
-
-                        
                     var achieveddata = [];
                     let achieved = {};
                     var targetdata=[];
                     let target = {};  
-                axios.get(`http://localhost:8000/api/kpi/${this.$route.params.id}`)
+                axios.get(`${process.env.APP_URL,'/kpi/'+this.$route.params.id}`)
                         .then((res) => {
                             this.totaldata = res.data.length+1;
                     for (var i = 0; i < res.data.length; i++){
@@ -104,7 +102,7 @@ import Card from '../components/global/Card.vue';
             center: true
             }).then(() => {
                     axios
-                    .delete(`http://localhost:8000/api/kpi/${row.id}`)
+                    .delete(`${process.env.APP_URL,'/kpi/'+row.id}`)
                     .then(response => ( 
                       this.$router.push({ name: 'analytics' ,params: {id: row.id}})
                     ))
