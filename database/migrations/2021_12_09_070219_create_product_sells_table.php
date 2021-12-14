@@ -18,6 +18,7 @@ class CreateProductSellsTable extends Migration
             $table->bigInteger('targete');
             $table->bigInteger('sells');
             $table->unsignedBigInteger('Kpi_id');
+            $table->date('datepic');
             $table->timestamps();
         });
     }
