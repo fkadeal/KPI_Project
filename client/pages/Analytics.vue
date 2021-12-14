@@ -77,14 +77,12 @@ import Card from '../components/global/Card.vue';
                         console.log(achieveddata);
                         console.log(target);
 
-                        console.log("datasellalldatasellalldatasellalldatasellall");
                         console.log(achieveddata[0]);
                         console.log(targetdata[0]);
-                        console.log("datasellalldatasellalldatasellall"); 
                         let data = [
-                {name: "Achieved", data: achieveddata[0]},
-                {name: "Target", data: targetdata[0]}
-              ];
+                          {name: "Achieved", data: achieveddata[0]},
+                          {name: "Target", data: targetdata[0]}
+                        ];
               this.gdata=data;
                 });       
                 //String strdata= achieveddata[0].toString()

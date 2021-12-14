@@ -1,10 +1,18 @@
 <template>
+<div>
+  <el-row :gutter="24">
+  <el-col :span="12"><line-chart :data="gdata[0]"></line-chart><div class="grid-content bg-purple"></div></el-col>
+  <el-col :span="12"><column-chart :data="gdata[0]"></column-chart><div class="grid-content bg-purple"></div></el-col>
+</el-row>
   <card title="Dashbord"> 
    {{ $t('you_are_logged_in') }}
   
-     <line-chart :data="gdata[0]"></line-chart>
+     <line-chart :data="gdata"></line-chart>
+
     <!-- {{gdata}} -->
   </card>
+  
+</div>
 </template>
 
 <script>
