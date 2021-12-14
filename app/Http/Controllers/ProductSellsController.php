@@ -22,6 +22,7 @@ public function store(Request $request){
         $product->targete = $request->input('targate');
         $product->sells = $request->input('todySell');
         $product->Kpi_id=$request->input('id');
+        $product->datepic=$request->input('datepic');
 
         $product->save();
              
