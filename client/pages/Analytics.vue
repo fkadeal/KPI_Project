@@ -3,7 +3,6 @@
      <card >
   
         <line-chart name='work' :data="gdata"></line-chart>
-{{ gdata  }}
        
   <el-table :data="kpisdata.filter(data => !search )" style="width: 100%">
     
