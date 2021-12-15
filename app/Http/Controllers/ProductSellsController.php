@@ -39,4 +39,12 @@ public function destroy($id){
     return response()->json('KPI Data delleted');
 }
 
+public function kpisupdate($id, Request $request){
+    $prod = ProductSells::find($id);
+    $prod->update($request->all());
+    return response()->json('updated');
+
+    
+}
+
 }
