@@ -6,7 +6,7 @@
     <div class="container mt-4">
       <nuxt />
     </div>
-    <sbar />
+    <!-- <sbar /> -->
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import Navbar from '~/components/Navbar';
 import sbar from '~/components/sideNavbar';
 export default {
   components: {
-    Navbar,sbar
+    Navbar, sbar
   }
 }
 </script>

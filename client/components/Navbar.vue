@@ -21,13 +21,14 @@
 
         <ul class="navbar-nav ml-auto">
           <!-- Authenticated -->
-          <li class="nav-item">
-             
-            </li>
+          <li class="nav-item" > <router-link :to="{ name: 'KPI' }" class="nav-link" active-class="active"> {{ $t('KPIs') }} </router-link></li>
+          <li class="nav-item" > <router-link :to="{ name: 'Entery' }" class="nav-link" active-class="active"> {{ $t('Add Data') }} </router-link></li>
+          <li class="nav-item" > <router-link :to="{ name: 'home' }" class="nav-link" active-class="active"> {{ $t('Dashbord') }} </router-link></li>
+          <li class="nav-item " ><router-link :to="{ name: 'analytics' }" class="nav-link" active-class="active el-icon-odometer"> {{ $t('Analytics') }} </router-link></li>
+
           <li v-if="user" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >
+               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
               {{ user.name }}
             </a>

@@ -2,7 +2,7 @@
 <div class="footer">
 <div class="navbar navbar-expand-lg navbar-light bg-light">
 
- <ul class="navbar-nav mr-auto">
+ <ul class="navbar-nav " style="float: left; padding: 3px 0" >
 <li class="nav-item" > <router-link :to="{ name: 'KPI' }" class="nav-link" active-class="active"> {{ $t('KPIs') }} </router-link></li>
 <li class="nav-item" > <router-link :to="{ name: 'Entery' }" class="nav-link" active-class="active"> {{ $t('Add Data') }} </router-link></li>
 <li class="nav-item" > <router-link :to="{ name: 'home' }" class="nav-link" active-class="active"> {{ $t('Dashbord') }} </router-link></li>
