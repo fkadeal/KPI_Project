@@ -1,13 +1,38 @@
 <template>
 <div>
+  <el-card class="box-card">
+       <nav style="float: right; " class="navbar navbar-expand-lg navbar-light bg-white">
+   <ul class="navbar-nav">
+      <li class="nav-item " >
+        <template v-if="authenticated">
+              <router-link :to="{ name: 'home' }">
+                {{ $t('home') }}
+              </router-link>
+            </template>
+            <template v-else>
+              <router-link :to="{ name: 'login' }">
+                {{ $t('login') }}
+              </router-link>
+              <router-link :to="{ name: 'register' }">
+                {{ $t('register') }}
+              </router-link>
+            </template>
+        </li>
+   </ul>
+      </nav>
+</el-card>
+  <el-card class="box-card">
+
+    <span> <h1>Beautifully Simple <strong>KPI Software</strong></h1></span> 
+   
     <div class="top-right links">
     
     </div>
+    <center>
 
-         <center>
         <div class="hero-holder-home">
             <div class="generic-holder hero-holder">
-                <h1>Beautifully Simple <strong>KPI Software</strong></h1>
+               
                 <h2>Track your Key Performance Indicators, Metrics and Business Data with insightful <strong>KPI Dashboards</strong> and <strong>Reports</strong></h2>
                 
 
@@ -17,27 +42,17 @@
                 </div>
             </div>
         </div>
-    </center>
-      <template v-if="authenticated">
-        <router-link :to="{ name: 'home' }">
-          {{ $t('home') }}
-        </router-link>
-      </template>
-      <template v-else>
-        <router-link :to="{ name: 'login' }">
-          {{ $t('login') }}
-        </router-link>
-        <router-link :to="{ name: 'register' }">
-          {{ $t('register') }}
-        </router-link>
-      </template>
+     </center>
+  </el-card>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Card from '../components/global/Card.vue'
 
 export default {
+  components: { Card },
   layout: 'simple',
 
   data: () => ({
