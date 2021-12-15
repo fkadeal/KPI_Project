@@ -1,12 +1,13 @@
 <template>
     <div> 
-     <card >
-  
-        <line-chart name='work' :data="gdata"></line-chart>
-       
-  <el-table :data="kpisdata.filter(data => !search )" style="width: 100%">
     
-    <el-table-column label="by Date"  prop="created_at"> </el-table-column>
+  <card class="box-card">
+        <line-chart name='work' :data="gdata"></line-chart>
+  </card>
+        <card >
+  <el-table :data="kpisdata" :default-sort = "{prop: 'datepic', order: 'descending'}" style="width: 100%">
+    
+    <el-table-column label="by Date"  prop="datepic" sortable> </el-table-column>
     <el-table-column label="Targate"  prop="targete"> </el-table-column>
     <el-table-column label="Achieved" prop="sells"> </el-table-column>
 
@@ -32,6 +33,7 @@
     </div>
 </template>
 
+        
         
 <script>
 import axios from 'axios';
@@ -67,14 +69,13 @@ import Card from '../components/global/Card.vue';
                             this.totaldata = res.data.length+1;
                     for (var i = 0; i < res.data.length; i++){
                             console.log('i '+i);
-                            achieved[res.data[i].created_at.toString()] = res.data[i].sells;
-                            target[res.data[i].created_at.toString()] = res.data[i].targete;
+                            achieved[res.data[i].datepic.toString()] = res.data[i].sells;
+                            target[res.data[i].datepic.toString()] = res.data[i].targete;
                         }
                         achieveddata.push(achieved);
                         targetdata.push(target);
                         console.log(achieveddata);
                         console.log(target);
-
                         console.log(achieveddata[0]);
                         console.log(targetdata[0]);
                         let data = [
@@ -92,7 +93,8 @@ import Card from '../components/global/Card.vue';
         methods: {
         handleAdd(index, row) {
         console.log(index, row);
-         this.$router.push({name: 'Enterdata', params: { id: row.id }})
+         this.$router.push({path: `/Entery/addSingKpi/${row.id }/${this.$route.params.id}`})
+         
       },
       handleDelete(index, row) {
             this.$confirm('This will permanently delete this Data. Continue?', 'Warning', {
@@ -104,7 +106,7 @@ import Card from '../components/global/Card.vue';
                     axios
                     .delete(`${process.env.APP_URL,'/kpi/'+row.id}`)
                     .then(response => ( 
-                      this.$router.push({ name: 'analytics' ,params: {id: row.id}})
+                      this.$router.push({ name: 'analytics' , params: { id: this.$route.params.id}})
                     ))
                     .catch(err => console.log(err))
                     .finally(() => this.loading = false)
@@ -119,7 +121,6 @@ import Card from '../components/global/Card.vue';
                 message: 'Delete canceled'
             });
             });
-            console.log(row.id)
         }
         }
             
