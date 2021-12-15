@@ -47,6 +47,7 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('oauth/{driver}', [OAuthController::class, 'redirect']);
     Route::get('oauth/{driver}/callback', [OAuthController::class, 'handleCallback'])->name('oauth.callback');
 });
-Route::resource('kpi', ProductSellsController::class);
+Route::resource('kpi', ProductSellsController::class); 
+Route::get('kpiss/{id}', [ProductSellsController::class, 'kpisupdate']);
 Route::resource('addkpi', KpiController::class);
 Route::get('addkpi/{id}', [KpiController::class, 'kpiid']);

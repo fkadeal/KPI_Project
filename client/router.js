@@ -12,6 +12,7 @@ const routes = [
   { path: '/KPI', name: 'KPI', component: page('KPI.vue') },
   { path: '/report', name: 'report', component: page('Report.vue') },
   { path: '/Entery/add/:id', name: 'Enterdata', component: page('addEntery.vue') },
+  { path: '/Entery/addSingKpi/:id/:kpid', name: 'SingKpi', component: page('enterDataSingKpi.vue') },
   { path: '/analytics', name: 'analytics', component: page('Analytics.vue') },
   { path: '/analytics/:id', name: 'analytic', component: page('Analytics.vue') },
 
