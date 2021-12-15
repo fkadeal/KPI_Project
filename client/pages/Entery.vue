@@ -1,5 +1,5 @@
 <template>
-<card title="Create New kpis">
+<el-card shadow="always" title="Create New kpis">
         <div class="row">
             <div class="col-md-6">
                 <form @submit.prevent="addkpis">
@@ -19,7 +19,7 @@
                 </form>
             </div>
         </div>
-    </card>
+    </el-card>
 </template>
  
 <script>

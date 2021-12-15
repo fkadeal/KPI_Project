@@ -3,7 +3,7 @@
      
     <router-link :to="{ name: 'Entery' }" class="el-icon-circle-plus size1 nav-link " > {{ $t('Add-New') }} </router-link>
    
-     <card >
+     <el-card shadow="always">
      
         
 
@@ -25,7 +25,7 @@
       </template>
     </el-table-column>
   </el-table>
-</card>
+</el-card>
   <card>
       pagination
   </card>
