@@ -1,16 +1,41 @@
 <template>
-<div>
+<div><el-card title="Dashbord"> 
+ 
+       {{ $t('All your CREATED kpis ') }}
   <el-row :gutter="24">
-  <el-col :span="12"><line-chart :data="gdata[0]"></line-chart><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="12"><column-chart :data="gdata[0]"></column-chart><div class="grid-content bg-purple"></div></el-col>
+    
+  <el-col :span="12">
+    <el-card shadow="always">
+     <pie-chart :data="allkpi"></pie-chart>
+      </el-card>
+      </el-col>
+        
+  <el-col :span="12">
+    <el-card shadow="always">
+      <bar-chart :data="allkpi"></bar-chart>
+      </el-card><div class="grid-content bg-purple">
+        </div>
+      </el-col>
 </el-row>
-  <card title="Dashbord"> 
-   {{ $t('you_are_logged_in') }}
-  
-     <line-chart :data="gdata"></line-chart>
+
+ <el-row :gutter="24">
+    
+  <el-col :span="12">
+    <el-card shadow="always">
+      <line-chart :data="gdata[0]"></line-chart>
+      </el-card>
+      </el-col>
+        
+  <el-col :span="12">
+    <el-card shadow="always">
+      <column-chart :data="gdata[0]"></column-chart>
+      </el-card><div class="grid-content bg-purple">
+        </div>
+      </el-col>
+</el-row>
 
     <!-- {{gdata}} -->
-  </card>
+  </el-card>
   
 </div>
 </template>
@@ -27,6 +52,7 @@ head () {
      
   data(){ 
     return {
+      allkpi:[],
       gdata:{}
     }
        },
@@ -35,6 +61,7 @@ head () {
     let datasellall = {};
     var newdata = [];
     let my_object = {};  
+    let paiobject={};
  
          axios.get('http://localhost:8000/api/kpi')
                 .then((res) => {
@@ -47,6 +74,27 @@ head () {
                 console.log(newdata);
                 this.gdata=newdata;
         });
+        let a=['RPC', 44],b=['PM', 23],c=['ADA',45],d=[];
+
+          d.push(a);
+          d.push(b);
+          d.push(c);
+
+        axios.get('http://localhost:8000/api/addkpi')
+                .then((res) => {
+                
+                  for (var i = 0; i < res.data.length; i++){
+                    console.log('i '+i);
+                    paiobject=[res.data[i].name.toString(), res.data[i].targate]; 
+                    d.push(paiobject);
+                    paiobject=[];
+                  }
+                
+                console.log(newdata); 
+                this.allkpi=d;
+        });
+        
+       
   },
 }
 </script>
