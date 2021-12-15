@@ -18,21 +18,7 @@
       </el-col>
 </el-row>
 
- <el-row :gutter="24">
-    
-  <el-col :span="12">
-    <el-card shadow="always">
-      <line-chart :data="gdata[0]"></line-chart>
-      </el-card>
-      </el-col>
-        
-  <el-col :span="12">
-    <el-card shadow="always">
-      <column-chart :data="gdata[0]"></column-chart>
-      </el-card><div class="grid-content bg-purple">
-        </div>
-      </el-col>
-</el-row>
+
 
     <!-- {{gdata}} -->
   </el-card>
